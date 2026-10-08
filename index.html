@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wirtualny Budynek AR</title>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene
+      mindar-image="imageTargetSrc: ./targets.mind;"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+    >
+      <a-assets>
+        <a-asset-item id="modelBudynku" src="./budynek.glb"></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- Pozycja budynku powiązana z Twoją kotwicą -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-gltf-model
+          id="moj-budynek"
+          src="#modelBudynku"
+          position="0 -1.6 -15"
+          rotation="90 0 0"
+          scale="1 1 1"
+        >
+        </a-gltf-model>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
